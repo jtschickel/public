@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Pool Summary</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #fafbfc;
+      margin: 0;
+      color: #222;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 240px;
+      background: #fff;
+      border-right: 1px solid #e5e7eb;
+      padding: 24px 0 0 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar .nav-section {
+      margin-bottom: 18px;
+    }
+    .sidebar .nav-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #222;
+      margin: 0 0 10px 24px;
+      letter-spacing: 0.5px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li {
+      margin-bottom: 2px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 8px 24px;
+      color: #222;
+      text-decoration: none;
+      border-radius: 6px 0 0 6px;
+      font-size: 1rem;
+      transition: background 0.15s;
+    }
+    .sidebar a.selected, .sidebar a:hover {
+      background: #e6f0ff;
+      color: #006aff;
+      font-weight: 500;
+    }
+    .sidebar .sub-list {
+      margin-left: 8px;
+    }
+    .sidebar .sub-list a {
+      font-size: 0.97rem;
+      padding-left: 36px;
+    }
+    .sidebar .sub-list a.selected {
+      background: #e6f0ff;
+      color: #006aff;
+    }
+    .sidebar-bottom {
+      margin-top: auto;
+      padding: 0 0 16px 0;
+    }
+    .sidebar-org {
+      display: flex;
+      align-items: center;
+      padding: 16px 16px 0 16px;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 16px;
+    }
+    .sidebar-org-icon {
+      width: 36px;
+      height: 36px;
+      background: #e6f0ff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #006aff;
+      font-size: 1.1rem;
+      margin-right: 10px;
+    }
+    .sidebar-org-label {
+      font-size: 1rem;
+      color: #222;
+      font-weight: 500;
+    }
+    .main-content {
+      flex: 1;
+      padding: 40px 40px 40px 40px;
+      max-width: 1200px;
+    }
+    .header-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #e6f0ff;
+      color: #006aff;
+      border-radius: 10px;
+      width: 48px;
+      height: 48px;
+      font-size: 2rem;
+      margin-right: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+    }
+    .summary-section {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      padding: 32px 32px 24px 32px;
+      margin-bottom: 32px;
+      max-width: 600px;
+    }
+    .summary-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #006aff;
+      margin-bottom: 18px;
+    }
+    .summary-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 16px;
+    }
+    .summary-label {
+      width: 180px;
+      color: #444;
+      font-weight: 500;
+      font-size: 1.01rem;
+    }
+    .summary-value {
+      color: #222;
+      font-size: 1.01rem;
+      font-weight: 400;
+    }
+    .receiver-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .receiver-list li {
+      margin-bottom: 8px;
+      padding-left: 0;
+      font-size: 1rem;
+      color: #222;
+    }
+    .receiver-label {
+      font-weight: 500;
+      color: #444;
+      margin-right: 8px;
+    }
+    .receiver-extra {
+      color: #006aff;
+      font-weight: 500;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav class="sidebar">
+      <div class="nav-section">
+        <ul>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Scheduling</a></li>
+          <li><a href="#">Time tracking</a></li>
+          <li><a href="#">Payroll</a></li>
+          <li><a href="#">HR & compliance</a></li>
+          <li><a href="#">Announcements</a></li>
+          <li><a href="#">Reports</a></li>
+        </ul>
+      </div>
+      <div class="nav-section">
+        <div class="nav-title">Settings</div>
+        <ul class="sub-list">
+          <li><a href="#">Schedule</a></li>
+          <li><a href="#">Time tracking</a></li>
+          <li><a href="#">Labor & compliance</a></li>
+          <li><a href="index.html" class="selected">Tip management</a></li>
+          <li><a href="#">Commissions</a></li>
+          <li><a href="#">Messages</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-org">
+          <div class="sidebar-org-icon">BC</div>
+          <div class="sidebar-org-label">Birch Coffee</div>
+        </div>
+      </div>
+    </nav>
+    <main class="main-content">
+      <h1><span class="header-icon">💧</span>Tip Pool Summary</h1>
+      <div class="summary-section" id="contributors-section">
+        <div class="summary-title">Contributors</div>
+        <ul id="contributors-list" style="margin:0; padding:0; list-style:none;"></ul>
+      </div>
+      <div class="summary-section">
+        <div class="summary-title">Summary of your tip pool setup</div>
+        <div class="summary-row">
+          <div class="summary-label">Tip calculation frequency:</div>
+          <div class="summary-value" id="summary-frequency">—</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-label">Tip distribution method:</div>
+          <div class="summary-value" id="summary-distribution">—</div>
+        </div>
+        <div class="summary-row">
+          <div class="summary-label">Receivers:</div>
+          <div class="summary-value">
+            <ul class="receiver-list" id="summary-receivers">
+              <!-- Receivers will be injected here -->
+            </ul>
+          </div>
+        </div>
+      </div>
+      <button id="save-summary-btn" style="background: #006aff; color: #fff; border: none; border-radius: 6px; padding: 12px 38px; font-size: 1.08rem; font-weight: 500; cursor: pointer; margin-top: 18px;">Save</button>
+    </main>
+  </div>
+  <script>
+    // This script expects data to be passed via localStorage from the review page
+    function getTipPoolSummary() {
+      try {
+        return JSON.parse(localStorage.getItem('tipPoolSummary')) || {};
+      } catch {
+        return {};
+      }
+    }
+    function renderSummary() {
+      const data = getTipPoolSummary();
+      document.getElementById('summary-frequency').textContent = data.frequency || '—';
+      document.getElementById('summary-distribution').textContent = data.distribution || '—';
+      const receivers = data.receivers || [];
+      const ul = document.getElementById('summary-receivers');
+      ul.innerHTML = '';
+      receivers.forEach(r => {
+        const li = document.createElement('li');
+        li.innerHTML = `<span class="receiver-label">${r.label}</span>${r.extra ? `<span class="receiver-extra">${r.extra}</span>` : ''}`;
+        ul.appendChild(li);
+      });
+      // Contributors
+      const contributors = (() => { try { return JSON.parse(localStorage.getItem('tipPoolContributors')) || []; } catch { return []; } })();
+      const contributorsList = document.getElementById('contributors-list');
+      contributorsList.innerHTML = '';
+      contributors.forEach(c => {
+        const li = document.createElement('li');
+        li.style.marginBottom = '10px';
+        // Format dropdown chain
+        let chainStr = '';
+        if (c.dropdownChain && c.dropdownChain.length) {
+          chainStr = c.dropdownChain
+            .filter(d => d.value)
+            .map((d, i) => (i > 0 ? ` <span style='color:#888;font-weight:600;'>${d.andOr}</span> ` : '') + `<span class='receiver-label'>${d.value}</span>`)
+            .join('');
+        }
+        li.innerHTML = chainStr +
+          (c.percent ? ` <span style='color:#006aff;font-weight:500;'>${c.percent}%</span>` : '') +
+          (c.tipTypes && c.tipTypes.length ? ` <span style='color:#444;'>of</span> <span style='color:#006aff;'>${c.tipTypes.join(', ')}</span>` : '');
+        contributorsList.appendChild(li);
+      });
+    }
+    renderSummary();
+    // Save button logic
+    document.getElementById('save-summary-btn').onclick = function() {
+      const summary = getTipPoolSummary();
+      // Add contributors from localStorage
+      let contributors = [];
+      try {
+        contributors = JSON.parse(localStorage.getItem('tipPoolContributors')) || [];
+      } catch {}
+      summary.contributors = contributors;
+      let saved = [];
+      try {
+        saved = JSON.parse(localStorage.getItem('savedTipPools')) || [];
+      } catch {}
+      saved.push(summary);
+      localStorage.setItem('savedTipPools', JSON.stringify(saved));
+      window.location.href = 'index.html';
+    };
+  </script>
+</body>
+</html> 
